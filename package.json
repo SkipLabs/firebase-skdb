@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "firebase": "^10.8.0",
-    "skdb": "^0.0.60"
+    "skdb": "^0.0.61"
   }
 }
