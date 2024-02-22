@@ -23,10 +23,12 @@ const app = initializeApp(firebaseConfig);
 
   await skdb.insertMany('json_products', data.map(x => { return {v: JSON.stringify(x)}; }));
 
+  console.log(await skdb.exec(`SELECT * FROM json_products LIMIT 10`));
+
   console.log((await skdb.exec(`
   SELECT json_schema_pretty(json_infer_schema(v)) AS schema
     FROM json_products
-  `))[0].schema);
+  `)).scalarValue());
 
   await skdb.exec(`
     CREATE REACTIVE VIEW products AS
